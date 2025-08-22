@@ -1,5 +1,5 @@
-import { connectDB } from '@/utils/db';
-import { Store } from '@/models/Store';
+import dbConnect from '../../../utils/db.js'
+import Store from '../../../models/Store.js'
 
 export default async function handler(req, res) {
   await connectDB();

@@ -1,5 +1,5 @@
-import { connectDB } from '@/utils/db';
-import { Order } from '@/models/Order';
+import dbConnect from '../../../utils/db.js'
+import Order from '../../../models/Order.js'
 
 export default async function handler(req, res) {
   await connectDB();
