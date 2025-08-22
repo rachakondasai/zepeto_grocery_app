@@ -142,7 +142,7 @@ export default function Dashboard() {
                   <img src={item.image || '/store.png'} alt={item.name} className="w-10 h-10 rounded mr-2" />
                   <div className="flex-1">
                     <div className="font-semibold text-green-800">{item.name}</div>
-                    <div className="text-xs text-gray-500">x{quantity} &bull; ${item.price * quantity}</div>
+                    <div className="text-xs text-gray-500">x{quantity} &bull; ₹{item.price * quantity}</div>
                   </div>
                 </li>
               ))}
@@ -150,7 +150,7 @@ export default function Dashboard() {
           )}
           <div className="mt-4 flex justify-between items-center">
             <span className="font-bold text-green-700">Total:</span>
-            <span className="font-bold">${cart.reduce((sum, i) => sum + (i.item?.price || 0) * i.quantity, 0)}</span>
+            <span className="font-bold">₹{cart.reduce((sum, i) => sum + (i.item?.price || 0) * i.quantity, 0)}</span>
           </div>
           <Link href="/checkout" legacyBehavior>
             <a className="block mt-4 bg-green-600 hover:bg-green-700 text-white text-center py-2 rounded font-semibold">Go to Checkout</a>
@@ -184,7 +184,7 @@ export default function Dashboard() {
                   <div key={item._id} className="bg-green-50 rounded-xl shadow p-4 flex flex-col items-center transition-transform hover:scale-105">
                     <img src={item.image || '/store.png'} alt={item.name} className="w-24 h-24 object-cover rounded mb-2 shadow" />
                     <div className="font-semibold text-green-800 text-center">{item.name}</div>
-                    <div className="text-gray-700 mb-1">${item.price}</div>
+                    <div className="text-gray-700 mb-1">₹{item.price}</div>
                     <button
                       className="mt-2 bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm focus:outline-none focus:ring font-semibold shadow"
                       onClick={() => addToCart(item)}
