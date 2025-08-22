@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
 
-const StoreSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  address: { type: String },
-  createdAt: { type: Date, default: Date.now },
+const storeSchema = new mongoose.Schema({
+  name: { type: String, required: true, unique: true },
+  address: { type: String, required: true },
+  password: { type: String, required: true }, // basic login, not hashed
 });
 
-export default mongoose.models.Store || mongoose.model('Store', StoreSchema);
+export const Store = mongoose.models.Store || mongoose.model('Store', storeSchema);
