@@ -1,3 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="${1:-.}"
+PAGE="$ROOT/frontend/pages/products.js"
+
+mkdir -p "$(dirname "$PAGE")"
+
+cat > "$PAGE" <<'EOF'
 import { useEffect, useState } from "react";
 import api from "../utils/api";
 import Navbar from "../components/Navbar";
@@ -48,3 +57,6 @@ export default function Products() {
     </Layout>
   );
 }
+EOF
+
+echo "✅ Frontend products page wired to API."
