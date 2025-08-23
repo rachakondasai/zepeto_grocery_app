@@ -13,7 +13,6 @@ public class UserStore {
 
     public UserStore(PasswordEncoder encoder) {
         this.encoder = encoder;
-        // seed an admin for testing
         create("admin@grocery.app", "Admin@123", "ADMIN");
     }
 

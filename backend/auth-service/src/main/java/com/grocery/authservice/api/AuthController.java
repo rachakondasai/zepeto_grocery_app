@@ -49,7 +49,6 @@ public class AuthController {
 
     @PostMapping("/logout")
     public ResponseEntity<Void> logout() {
-        // stateless JWT -> client just drops the token
         return ResponseEntity.noContent().build();
     }
 }

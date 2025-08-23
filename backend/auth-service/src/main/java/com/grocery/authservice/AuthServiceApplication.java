@@ -14,8 +14,6 @@ public class AuthServiceApplication {
 
 @RestController
 class HealthController {
-    @GetMapping("/health")
-    public String health() {
-        return "ok";
-    }
+    @GetMapping("/auth/health")
+    public String health() { return "ok"; }
 }
