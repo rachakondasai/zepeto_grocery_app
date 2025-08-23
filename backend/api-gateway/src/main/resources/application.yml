@@ -8,7 +8,13 @@ spring:
     gateway:
       default-filters:
         - RemoveResponseHeader=Server
-      routes: []  # We'll add routes as services are implemented
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**, /auth/health
+          filters:
+            - StripPrefix=0
 
 eureka:
   client:
@@ -20,7 +26,4 @@ eureka:
     prefer-ip-address: true
 
 management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
+  endpoints.web.exposure.include: health,info

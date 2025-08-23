@@ -8,10 +8,15 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: ${
-        EUREKA_SERVER_URL:http://localhost:8761/eureka
-      }
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}
     register-with-eureka: true
     fetch-registry: true
   instance:
     prefer-ip-address: true
+
+jwt:
+  secret: ${JWT_SECRET:this_is_dev_only_change_me}
+  expirationMs: ${JWT_EXPIRATION_MS:86400000} # 1 day
+
+management:
+  endpoints.web.exposure.include: health,info
