@@ -1,0 +1,23 @@
+FROM maven:3.9.6-eclipse-temurin-21 AS build
+WORKDIR /src
+COPY ./pom.xml ./
+COPY ./service-registry ./service-registry
+COPY ./api-gateway ./api-gateway
+COPY ./auth-service ./auth-service
+COPY ./user-service ./user-service
+COPY ./product-service ./product-service
+COPY ./cart-service ./cart-service
+COPY ./order-service ./order-service
+COPY ./admin-service ./admin-service
+COPY ./search-service ./search-service
+COPY ./store-service ./store-service
+RUN mvn -B -f ./pom.xml clean package -DskipTests
+
+FROM eclipse-temurin:21-jre
+WORKDIR /app/backend
+COPY --from=build /src /app/backend
+COPY ./start.sh /app/backend/start.sh
+RUN chmod +x /app/backend/start.sh
+EXPOSE 8080
+ENV JAVA_OPTS=""
+CMD ["sh","-c","$JAVA_OPTS /app/backend/start.sh"]

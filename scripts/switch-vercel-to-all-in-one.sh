@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT="${1:-.}"
+cat > "$ROOT/vercel.json" <<'EOF'
 {
   "version": 2,
   "builds": [
@@ -9,3 +13,5 @@
     { "src": "/(.*)", "dest": "frontend/$1" }
   ]
 }
+EOF
+echo "✅ Vercel config switched to all-in-one backend."
