@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  # Add DB and services later when implementing logic
+  # This file is intentionally minimal for Vercel-first deploys.
+  placeholder:
+    image: alpine:3.19
+    command: ["sh", "-c", "echo 'Local docker-compose coming after service code is added.' && tail -f /dev/null"]
